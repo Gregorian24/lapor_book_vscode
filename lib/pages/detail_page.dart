@@ -40,6 +40,7 @@ class _DetailPageState extends State<DetailPage> {
                 height: 15,
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   textStatus('Posted', warningColor, Colors.white),
                   textStatus('Pembangunan', Colors.white, Colors.black),

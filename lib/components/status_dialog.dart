@@ -23,7 +23,7 @@ class _StatusDialogState extends State<StatusDialog> {
       await laporanCollection
           .doc(widget.laporan.docId)
           .update({'status': status});
-      Navigator.pushNamed(context, '/dashboard');
+      Navigator.pushNamedAndRemoveUntil(context, '/dashboard', (_) => false);
     } catch (e) {
       print(e);
     }
@@ -39,9 +39,6 @@ class _StatusDialogState extends State<StatusDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final arguments =
-        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-
     return AlertDialog(
       backgroundColor: primaryColor,
       content: Container(

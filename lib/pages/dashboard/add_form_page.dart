@@ -43,7 +43,7 @@ class _AddFormPageState extends State<AddFormPage> {
   Future<dynamic> uploadDialog(BuildContext context) {
     return showDialog(
         context: context,
-        builder: (BuildContext) {
+        builder: (buildContext) {
           return AlertDialog(
             title: const Text('Pilih sumber '),
             actions: [
@@ -226,8 +226,7 @@ class _AddFormPageState extends State<AddFormPage> {
                                 decoration: customInputDecoration('Instansi'),
                                 items: dataInstansi.map((e) {
                                   return DropdownMenuItem<String>(
-                                      value: e,
-                                      child: Text(e));
+                                      value: e, child: Text(e));
                                 }).toList(),
                                 onChanged: (selected) {
                                   setState(() {

@@ -8,10 +8,14 @@ import 'package:lapor_book/components/styles.dart';
 import 'package:lapor_book/models/laporan.dart';
 
 class ListItem extends StatefulWidget {
+  final Akun akun;
   final Laporan laporan;
+  final bool isLaporanku;
   const ListItem({
     super.key,
     required this.laporan,
+    required this.akun,
+    required this.isLaporanku,
   });
 
   @override
@@ -19,6 +23,23 @@ class ListItem extends StatefulWidget {
 }
 
 class _ListItemState extends State<ListItem> {
+  final _db = FirebaseFirestore.instance;
+  final _storage = FirebaseStorage.instance;
+
+  void deleteLaporan() async {
+    try {
+      CollectionReference laporanCollection = _db.collection('laporan');
+
+      if (widget.laporan.gambar != '') {
+        await _storage.refFromURL(widget.laporan.gambar!).delete();
+      }
+
+      await laporanCollection.doc(widget.laporan.docId).delete();
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,7 +48,39 @@ class _ListItemState extends State<ListItem> {
           borderRadius: BorderRadius.vertical(bottom: Radius.circular(10))),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, '/detail');
+          Navigator.pushNamed(
+            context,
+            '/detail',
+            arguments: {
+              'akun': widget.akun,
+              "laporan": widget.laporan,
+            },
+          );
+        },
+        onLongPress: () {
+          if (widget.isLaporanku)
+            showDialog(
+              context: context,
+              builder: (BuildContext buildContext) {
+                return AlertDialog(
+                  title: Text('Hapus ${widget.laporan.judul}?'),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(buildContext);
+                      },
+                      child: Text('Cancel'),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        deleteLaporan();
+                      },
+                      child: Text('Delete'),
+                    )
+                  ],
+                );
+              },
+            );
         },
         child: Column(
           children: [

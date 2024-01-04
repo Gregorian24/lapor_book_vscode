@@ -166,6 +166,7 @@ class _AddFormPageState extends State<AddFormPage> {
   Widget build(BuildContext context) {
     final arguments =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+
     final Akun akun = arguments['akun'];
     return Scaffold(
       appBar: AppBar(

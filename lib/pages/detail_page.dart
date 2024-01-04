@@ -42,14 +42,14 @@ class _DetailPageState extends State<DetailPage> {
       body: SafeArea(
           child: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.all(30),
+          margin: const EdgeInsets.all(30),
           child: Column(
             children: [
               Text(
                 laporan.judul,
                 style: headerStyle(level: 2),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               laporan.gambar != ''
@@ -59,7 +59,7 @@ class _DetailPageState extends State<DetailPage> {
                   : Image.asset(
                       'assets/istock-default.jpg',
                     ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Row(
@@ -77,12 +77,12 @@ class _DetailPageState extends State<DetailPage> {
                 ],
               ),
               ListTile(
-                title: Text('Nama Pelapor'),
+                title: const Text('Nama Pelapor'),
                 subtitle: Text(laporan.nama),
-                leading: Icon(Icons.person),
+                leading: const Icon(Icons.person),
               ),
               ListTile(
-                title: Text('Tanggal'),
+                title: const Text('Tanggal'),
                 subtitle: Text(
                   DateFormat('dd MMMM yyyy').format(laporan.tanggal),
                 ),
@@ -90,25 +90,25 @@ class _DetailPageState extends State<DetailPage> {
                   onPressed: () {
                     launch(laporan.maps);
                   },
-                  icon: Icon(Icons.location_on),
+                  icon: const Icon(Icons.location_on),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               Text(
                 'Deskripsi',
                 style: headerStyle(level: 2),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Text(laporan.deskripsi ?? 'No description'),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               if (akun.role == 'admin')
-                Container(
+                SizedBox(
                   width: 250,
                   child: ElevatedButton(
                     onPressed: () {
@@ -126,7 +126,7 @@ class _DetailPageState extends State<DetailPage> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
                     ),
-                    child: Text('Ubah Status'),
+                    child: const Text('Ubah Status'),
                   ),
                 )
             ],
@@ -140,14 +140,14 @@ class _DetailPageState extends State<DetailPage> {
     return Container(
       alignment: Alignment.center,
       width: 150,
-      child: Text(
-        text,
-        style: TextStyle(color: fgColor),
-      ),
       decoration: BoxDecoration(
         color: bgColor,
         border: Border.all(width: 1),
         borderRadius: BorderRadius.circular(15),
+      ),
+      child: Text(
+        text,
+        style: TextStyle(color: fgColor),
       ),
     );
   }

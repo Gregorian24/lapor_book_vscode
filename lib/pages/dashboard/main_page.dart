@@ -6,7 +6,7 @@ import 'package:lapor_book/models/laporan.dart';
 
 class AllLaporan extends StatefulWidget {
   final Akun akun;
-  AllLaporan({super.key, required this.akun});
+  const AllLaporan({super.key, required this.akun});
 
   @override
   State<AllLaporan> createState() => _AllLaporanState();
@@ -57,9 +57,9 @@ class _AllLaporanState extends State<AllLaporan> {
     getLaporan();
     return SafeArea(
       child: Container(
-        margin: EdgeInsets.all(20),
+        margin: const EdgeInsets.all(20),
         child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,

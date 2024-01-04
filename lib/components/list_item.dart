@@ -45,7 +45,7 @@ class _ListItemState extends State<ListItem> {
     return Container(
       decoration: BoxDecoration(
           border: Border.all(width: 2),
-          borderRadius: BorderRadius.vertical(bottom: Radius.circular(10))),
+          borderRadius: const BorderRadius.vertical(bottom: Radius.circular(10))),
       child: InkWell(
         onTap: () {
           Navigator.pushNamed(
@@ -58,7 +58,7 @@ class _ListItemState extends State<ListItem> {
           );
         },
         onLongPress: () {
-          if (widget.isLaporanku)
+          if (widget.isLaporanku) {
             showDialog(
               context: context,
               builder: (BuildContext buildContext) {
@@ -69,18 +69,19 @@ class _ListItemState extends State<ListItem> {
                       onPressed: () {
                         Navigator.pop(buildContext);
                       },
-                      child: Text('Cancel'),
+                      child: const Text('Cancel'),
                     ),
                     TextButton(
                       onPressed: () {
                         deleteLaporan();
                       },
-                      child: Text('Delete'),
+                      child: const Text('Delete'),
                     )
                   ],
                 );
               },
             );
+          }
         },
         child: Column(
           children: [
@@ -98,8 +99,8 @@ class _ListItemState extends State<ListItem> {
             Container(
               width: double.infinity,
               alignment: Alignment.center,
-              padding: EdgeInsets.symmetric(vertical: 10),
-              decoration: BoxDecoration(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              decoration: const BoxDecoration(
                 border: Border.symmetric(
                   horizontal: BorderSide(width: 2),
                 ),
@@ -116,17 +117,17 @@ class _ListItemState extends State<ListItem> {
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(vertical: 8),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                     decoration: BoxDecoration(
                       color: widget.laporan.status == "Posted"
                           ? warnaStatus[0]
                           : widget.laporan.status == "Process"
                               ? warnaStatus[1]
                               : warnaStatus[2],
-                      border: Border(
+                      border: const Border(
                         right: BorderSide(width: 2),
                       ),
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         bottomLeft: Radius.circular(8),
                       ),
                     ),
@@ -139,11 +140,11 @@ class _ListItemState extends State<ListItem> {
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(vertical: 8),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                     decoration: BoxDecoration(
                         color: successColor,
                         borderRadius:
-                            BorderRadius.only(bottomRight: Radius.circular(8))),
+                            const BorderRadius.only(bottomRight: Radius.circular(8))),
                     child: Text(
                       DateFormat('dd/MM/yyyy').format(widget.laporan.tanggal),
                       style: headerStyle(level: 5, dark: false),

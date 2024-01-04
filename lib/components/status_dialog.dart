@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lapor_book/components/styles.dart';
-import 'package:lapor_book/models/akun.dart';
 import 'package:lapor_book/models/laporan.dart';
 
 class StatusDialog extends StatefulWidget {
@@ -47,7 +46,7 @@ class _StatusDialogState extends State<StatusDialog> {
       backgroundColor: primaryColor,
       content: Container(
         height: 350,
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -55,11 +54,11 @@ class _StatusDialogState extends State<StatusDialog> {
         child: Column(
           children: [
             Text(widget.laporan.judul),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             RadioListTile(
-              title: Text('Posted'),
+              title: const Text('Posted'),
               value: 'Posted',
               groupValue: status,
               onChanged: (value) {
@@ -68,9 +67,9 @@ class _StatusDialogState extends State<StatusDialog> {
                 });
               },
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             RadioListTile(
-              title: Text('Process'),
+              title: const Text('Process'),
               value: 'Process',
               groupValue: status,
               onChanged: (value) {
@@ -79,9 +78,9 @@ class _StatusDialogState extends State<StatusDialog> {
                 });
               },
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             RadioListTile(
-              title: Text('Done'),
+              title: const Text('Done'),
               value: 'Done',
               groupValue: status,
               onChanged: (value) {
@@ -90,7 +89,7 @@ class _StatusDialogState extends State<StatusDialog> {
                 });
               },
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             ElevatedButton(
               onPressed: () {
                 updateStatus();
@@ -101,7 +100,7 @@ class _StatusDialogState extends State<StatusDialog> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
               ),
-              child: Text('Ubah Status'),
+              child: const Text('Ubah Status'),
             ),
           ],
         ),

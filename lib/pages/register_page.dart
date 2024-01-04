@@ -22,6 +22,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   final TextEditingController _password = TextEditingController();
 
+  @override
   void initState() {
     super.initState();
   }
@@ -75,7 +76,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 80,
                       width: double.infinity,
                     ),
@@ -86,9 +87,9 @@ class _RegisterPageState extends State<RegisterPage> {
                         style: TextStyle(color: Colors.grey),
                       ),
                     ),
-                    SizedBox(height: 50),
+                    const SizedBox(height: 50),
                     Container(
-                      margin: EdgeInsets.symmetric(horizontal: 30),
+                      margin: const EdgeInsets.symmetric(horizontal: 30),
                       child: Form(
                         key: _formKey,
                         child: Column(children: [
@@ -137,7 +138,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 decoration: customInputDecoration(""),
                               )),
                           Container(
-                            margin: EdgeInsets.only(top: 20),
+                            margin: const EdgeInsets.only(top: 20),
                             width: double.infinity,
                             child: FilledButton(
                               style: buttonStyle,

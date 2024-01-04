@@ -53,7 +53,7 @@ class _DashboardFullState extends State<DashboardFull> {
           .get();
 
       if (querySnapshot.docs.isNotEmpty) {
-        var userData = querySnapshot.docs.first.data() as Map<String, dynamic>;
+        var userData = querySnapshot.docs.first.data();
 
         setState(() {
           akun = Akun(
@@ -89,6 +89,7 @@ class _DashboardFullState extends State<DashboardFull> {
     getAkun();
   }
 
+  @override
   Widget build(BuildContext context) {
     pages = <Widget>[
       AllLaporan(akun: akun),
@@ -98,7 +99,7 @@ class _DashboardFullState extends State<DashboardFull> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
-        child: Icon(Icons.add, size: 35),
+        child: const Icon(Icons.add, size: 35),
         onPressed: () {
           Navigator.pushNamed(context, '/add', arguments: {
             'akun': akun,

@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 50),
                     Container(
-                      margin: EdgeInsets.symmetric(horizontal: 30),
+                      margin: const EdgeInsets.symmetric(horizontal: 30),
                       child: Form(
                         key: _formKey,
                         child: Column(
@@ -73,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.only(top: 20),
+                              margin: const EdgeInsets.only(top: 20),
                               width: double.infinity,
                               child: FilledButton(
                                   style: buttonStyle,
